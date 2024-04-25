@@ -12,9 +12,7 @@ import {ref} from 'vue';
  const plans = ref([
     "El soltero",
     "El adicto",
-    "El viajero",
-    "El colombiano",
-    "El italiano"
+    "El viajero"
     ]);
 </script>
 
