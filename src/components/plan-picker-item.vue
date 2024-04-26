@@ -1,18 +1,17 @@
 <template>
     <div
     @click="select"
-     :class="{'selected-plan':selected}"
+     :class="{'selected-plan':isSelected}"
       class="plan">
          <div class="description">
            <span class="title">
-             {{ name }} {{ selected ? "🐶" : "" }}
+             {{ name }} 
           </span>
       </div>
      </div>
  </template>
  <script setup>
-import { ref } from 'vue';
-
+ import { computed } from 'vue';
 // Creando un evento
 const emit = defineEmits(['select']);
 
@@ -21,13 +20,19 @@ const props = defineProps ({
      type: String,
      required: true
    }, 
+   selectedPlan: {
+    type: String
+   },
   });
- const selected = ref(false);
  const select = () => {
-  selected.value = true
   // Detonando el evento
   emit('select', props.name);
  }
+
+ // Creando propiedad computada
+ const isSelected = computed(() => {
+  return props.name === props.selectedPlan;
+ });
 
  </script>
 
