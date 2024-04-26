@@ -4,8 +4,8 @@
        @select="printSelected"
        v-for="plan in plans"
       :name="plan"
-      v-bind:key="plan">
-      </plan-picker-item>
+      v-bind:key="plan"/>
+      {{ selectedPlan }}
     </div>
 </template>
 
@@ -18,8 +18,10 @@ import {ref} from 'vue';
     "El viajero"
     ]);
 
+    const selectedPlan = ref(null);
+
     const printSelected = (playload) => {
-      console.log(`Se selecciono: ${playload}`)
+      selectedPlan.value= playload;
     }
 </script>
 
